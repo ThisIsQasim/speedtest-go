@@ -4,7 +4,7 @@ WORKDIR /build
 COPY go.mod go.sum ./
 RUN go mod download
 COPY ./ ./
-RUN go build -ldflags "-w -s" -trimpath -o speedtest .
+RUN go build -ldflags "-w -s" -trimpath -buildvcs=false -o speedtest .
 
 FROM alpine:3.16
 RUN apk add --no-cache ca-certificates
